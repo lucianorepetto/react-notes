@@ -16,10 +16,6 @@
     user-select: initial;
 }
 
-body{
-    margin: 50px;
-}
-
 :root {
     --m-primary: rgb(77, 46, 128);
 }
@@ -36,7 +32,7 @@ textarea{
     border-color: var(--m-primary);
     border-radius: 5px;
     padding: 10px;
-    width: calc(100% - 20px);
+    width: calc(100% - 20px) !important;
 }
 
 button {
@@ -63,8 +59,9 @@ li {
 }
 
 .todoListContainer{
-    width: 400px;
-    margin: auto;
+    width: 80vw;
+    max-width: 400px;
+    margin: 20px auto;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
     padding: 20px;
     border-radius: 20px;

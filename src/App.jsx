@@ -51,7 +51,7 @@ export function App(){
         if (task === '') return;
 
         const description = todoDescRef.current.value
-        if (description === '') return;
+
 
         setTodos((prevTodos) => {
             return [...prevTodos, {id: uuid(), task, description, completed: false}]
@@ -71,6 +71,7 @@ export function App(){
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             handleTodoAdd()
+            todoTaskRef.current.focus()
         }
     }
 
@@ -80,6 +81,13 @@ export function App(){
         filterTodos(newTodos)
     }
 
+    const nextInput = (e) => {
+        if (e.key === 'Enter') {
+            console.log('next')
+            e.preventDefault();
+            var form = document.querySelector('textarea').focus()
+        }
+    }
 
     return (
         <div className='todoListContainer'>
@@ -87,7 +95,7 @@ export function App(){
             <div className='separator'></div>
             <TodoList key='1' todos={todosFinished} toggleTodo={toggleTodo}/>
             <div>
-                <input ref={todoTaskRef} type="text" placeholder='Nueva Tarea' onKeyDown={handleKeyDown}/>
+                <input ref={todoTaskRef} type="text" placeholder='Nueva Tarea' onKeyDown={nextInput}/>
             </div>
             <div>
                 <textarea ref={todoDescRef} type="text" placeholder='Descripcion' onKeyDown={handleKeyDown}/>
